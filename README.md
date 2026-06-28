@@ -8,7 +8,7 @@ Be warned that since I mainly use zsh, there may be some code that is only zsh c
 - create documentation for the scripts.
     - Or dynamically add those documentation to here, or another relevant readme file.
 
-# Terminal configuration framework
+# ZSH Optimization Framework
 
 A highly efficient, modular configuration framework for organizing zsh code. Instead of stuffing thousands of lines of aliases, environment variables, and custom functions into a single monolithic `.zshrc`, this repository organizes them into a clean, nested folder structure and utilizes Zsh's native word-code (`.zwc`) compilation for blazing-fast shell startup times.
 
