@@ -11,16 +11,27 @@ export_proxy() {
 	export no_proxy="$NO_PROXY"
 }
 
+set-proxy() {
+	export HTTP_PROXY="http://${PROXY_DOMAIN}:8080"
+    export http_proxy="$HTTP_PROXY"
+    export HTTPS_PROXY="http://${PROXY_DOMAIN}:8080"
+    export https_proxy="$HTTPS_PROXY"
+	export ALL_PROXY="socks5h://${PROXY_DOMAIN}:1080"
+	export all_proxy="$ALL_PROXY"
+	export NO_PROXY="localhost,127.0.0.1,::1,.example.com,10.0.0.0/8,192.168.0.0/16"
+	export no_proxy="$NO_PROXY"
+}
+
 vpn-http-proxy() {
-	export_proxy $VPN_DOMAIN http https
+	export_proxy $PROXY_DOMAIN http https
 }
 
 vpn-socks-proxy() {
-	export_proxy $VPN_DOMAIN socks5h socks5h
+	export_proxy $PROXY_DOMAIN socks5h socks5h
 }
 
 vpn-insecure-http-proxy() {
-	export_proxy $VPN_DOMAIN http http
+	export_proxy $PROXY_DOMAIN http http
 }
 
 v2ray-socks-proxy() {
