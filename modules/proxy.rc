@@ -5,6 +5,21 @@ export_proxy() {
     export http_proxy="$2://$1"
     export HTTPS_PROXY="$3://$1"
     export https_proxy="$3://$1"
+	export ALL_PROXY="$HTTPS_PROXY"
+	export all_proxy="$https_proxy"
+	# TODO: export NO_PROXY
+}
+
+vpn-http-proxy() {
+	export_proxy $VPN_DOMAIN http https
+}
+
+vpn-socks-proxy() {
+	export_proxy $VPN_DOMAIN socks5h socks5h
+}
+
+vpn-insecure-http-proxy() {
+	export_proxy $VPN_DOMAIN http http
 }
 
 v2ray-socks-proxy() {
@@ -78,14 +93,6 @@ happ-insecure-http-proxy() {
 gscript-insecure-http-proxy() {
     export_proxy $GSCRIPT_PROXY http http
 }
-
-unset-proxy() {
-    unset HTTP_PROXY
-    unset HTTPS_PROXY
-    unset http_proxy
-    unset https_proxy
-}
-
 
 unset-proxy() {
     unset HTTP_PROXY
